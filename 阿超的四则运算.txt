@@ -1,0 +1,60 @@
+//桃子之——阿超的四则运算
+/*要求：
+ 1.随机产生50个四则预算，包括整数和真分数
+ 2.要求不重复
+ */
+package bb;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.Vector;
+
+//阿超的运算程序
+public class Cc {
+public static void main(String args[]){
+    Scanner sc=new Scanner(System.in);
+    Random ne=new Random();
+    Vector vet=new Vector();
+    
+    for(int i=1;i<=50;i++){//50题 每题的要求在for循环里判断
+        boolean flag=false;//判断当真分数时进行循环
+        String jg=" ";int a = 0,b=0,c=0,d=0,e=0,f=0;char h='-';//初始化随机数
+        while(flag==false)
+        {
+            a=ne.nextInt(301);
+            b=ne.nextInt(301);
+            c=ne.nextInt(301);
+            d=ne.nextInt(301);
+            e=ne.nextInt(301);
+            f=ne.nextInt(301);
+            if(a<b&&c<d){
+            flag=true;
+            Object[] obj = new Object[4];//混合数组        {整数，整数，真分数，真分数}
+            obj[0]=e;
+            obj[1]=f;
+            obj[2]=a+"/"+b;
+            obj[3]=c+"/"+d;
+            int objcd1=ne.nextInt(obj.length);
+            Object m=obj[objcd1];String str1=m.toString(); 
+            int objcd2=ne.nextInt(obj.length);//获取混合数组的一个元素
+            Object n=obj[objcd2];String str2=n.toString(); 
+            
+            char[] fh={'+','-','*','/'};//符号数组
+            int ysfh=ne.nextInt(fh.length);
+            h=fh[ysfh];
+            
+            //查重
+            jg=str1+" "+h+" "+str2+" "+"=";
+            for(int j=0;j<vet.size();j++){
+                if(vet.get(j).equals(jg))
+                    flag=false;
+                
+                else vet.add(jg);
+            }
+            
+            if(flag==true)
+            System.out.println(str1+" "+h+" "+str2+" "+"=");
+            }
+        }
+    }
+}
+}
